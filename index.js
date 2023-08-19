@@ -13,7 +13,11 @@ function invert(people){
     // Uma dica, você pode utilizar a função prompt para permitir que o usuário digite os
     // nomes dos usuários.
 
-    return [];
+    let nomesInv = [];
+    for(let i = people.length - 1; i >= 0; i--)
+        nomesInv.push(people[i]);
+
+    return nomesInv;
 }
 
 /**
@@ -29,7 +33,13 @@ function mean(grades){
     // o nome do aluno, sua média e se ele foi aprovado, sabendo-se que a média para aprovação é igual
     // ou superior a 7.
 
-    return 0;
+    let media = 0;
+    const gradesLen = grades.length;
+
+    for(let i = 0; i < gradesLen; i++)
+        media += grades[i];
+
+    return media / gradesLen;
 }
 
 /**
@@ -45,7 +55,10 @@ function isApproved(mean){
     // o nome do aluno, sua média e se ele foi aprovado, sabendo-se que a média para aprovação é igual
     // ou superior a 7.
 
-    return "";
+    if(mean >= 7)
+        return "aprovado";
+
+    return "reprovado";
 }
 
 /**
@@ -62,7 +75,31 @@ function wide(strDate){
     // “split” de uma string que quebra a string em pedaços dado um separador como argumento da função.
     // Nesse caso, o separador é a barra (/) da data.
 
-    return "";
+    if(strDate.indexOf("/") < 0 || strDate.length <= 0)
+        return "";
+
+    let ddmmaaaa = strDate.split("/");
+
+    const mesExt = (mesInt) => {
+        const meses = {
+            1: "janeiro",
+            2: "fevereiro",
+            3: "março",
+            4: "abril",
+            5: "maio",
+            6: "junho",
+            7: "julho",
+            8: "agosto",
+            9: "setembro",
+            10: "outubro",
+            11: "novembro",
+            12: "dezembro",
+        }
+
+        return meses[parseInt(mesInt)];
+    }
+
+    return ddmmaaaa[0] + " de " + mesExt(ddmmaaaa[1]) + " de " + ddmmaaaa[2];
 }
 
 // Trecho utilizado pelos testes
